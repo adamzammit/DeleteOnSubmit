@@ -18,7 +18,7 @@ git clone --recursive https://github.com/adamzammit/DeleteOnSubmit.git DeleteOnS
 2. Activate the plugin
 3. Activate an existing or new survey
 4. Visit "Simple plugin settings" for the survey and choose "Settings for plugin DeleteOnSubmit"
-5. Choose what expression should determine if a response should be deleted, eg A1=='Y' would be if question A1 is answered "Y", the response should be deleted. You can just put the number 1 if you want all responses deleted regardless of the choice of the respondent.
+5. Choose what expression should determine if a response should be deleted, eg {A1=='Y'} would be if question A1 is answered "Y", the response should be deleted. You can just put the number 1 if you want all responses deleted regardless of the choice of the respondent.
 
 Note: See the included file "example-survey-deleteonsubmit.lss" to see how you can set up a question to decide whether to delete on submit or not
 
