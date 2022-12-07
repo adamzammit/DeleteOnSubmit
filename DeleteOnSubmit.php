@@ -40,7 +40,7 @@ class DeleteOnSubmit extends PluginBase
             ],
             'default' => 0,
             'label' => 'Enable Debug Mode',
-            'help' => 'Enable debugmode to check how expression is working'
+            'help' => 'Enable debugmode to see the result of the expression set in the plugin settings (will see it on end page of survey)'
         ]
     ];
 
@@ -72,11 +72,11 @@ class DeleteOnSubmit extends PluginBase
             $survey = Survey::model()->findByPk($surveyId);
             $responseId = $event->get('responseId');
             $response = $this->api->getResponse($surveyId, $responseId);
-            $token = Token::model($surveyId)->findByToken($response['token']);
             $pr = LimeExpressionManager::ProcessString($rr, null, array(), 3, 1, false, false, true);
-            $this->debug("Result of expression manager", $pr, microtime(true));
+            $this->debug("Result of expression manager equation set in plugin settings ($rr)", $pr, microtime(true));
             if ($pr === true || $pr === "1") {
                 $this->api->removeResponse($surveyId, $responseId); 
+                $this->debug("Response is now deleted. Response id was:", $responseId, microtime(true));
             }
         }
     }
